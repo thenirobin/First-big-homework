@@ -1,0 +1,106 @@
+#homepage {
+    width: 100vw;
+    height: 100vh;
+    background: rgb(236, 236, 241);
+}
+
+body {
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 25px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 70px;
+}
+
+.cat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    border: 5px solid rgb(182, 182, 182);
+    border-radius: 20px;
+    margin: 30px;
+}
+
+.cat-card img {
+    margin-top: 15px;
+    width: 10vw;
+}
+
+.create-edit-modal-form{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 200px;
+    left: 800px;
+    background-color: rgb(244, 244, 244);
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    margin: 15% auto;
+}
+
+.active {
+    display: flex;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: start;
+    align-content: start;
+    padding: 20px;
+    padding-right: 50px;
+    position: fixed;
+    top: 0;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,0.5368522408963585) 0%, rgba(253,29,29,0.5284488795518207) 50%, rgba(252,176,69,0.5396533613445378) 100%);
+    z-index: 1;
+    left: 0;
+    right: 0;
+}
+
+button {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    color: white;
+    background-color: rgb(168, 168, 168);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(134, 134, 134, 0.683);
+}
+header button {
+    font-size: 20px;   
+}
+
+button:hover {
+    background-color: #e66bef;
+    box-shadow: 0 16px 36px rgba(246 152 12 / 20%);
+    transition: background-color 0.3s ease-in;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+form input {
+    margin-bottom: 5px;
+}

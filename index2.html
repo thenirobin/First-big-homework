@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = './api.js' defer ></script>
+    <script src = './index.js' defer ></script>
+    <script src = './components/card.js' defer ></script>
+    <script src = './components/create-edit.js' defer></script>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <button id="addNewCat">Добавить кота</button>
+    </header>
+    <div id='homepage'>
+    <div class = 'content'></div>
+    <div class = 'create-edit-modal-form'>
+        <button class="closeNewCatForm">&times;</button>
+        <form action="">
+            <label for="id">id</label>
+            <input id='id' name ='id' placeholder="Id" required>
+            <label for="name">Имя</label>
+            <input id='name' name="name" placeholder="Например: Барсик" required>
+            <label for="image">Фотокарточка</label>
+            <input id='image' name="image" placeholder="Ссылка на фото" required>
+            <label for="age">Возраст кота</label>
+            <input id='age' name="age" type="number" placeholder="Например: 5" required>
+            <label for="rate">Рейтинг</label>
+            <input id="rate" name="rate" type="number" placeholder="От 0 до 10" required>
+            <textarea id="description" name="description" rows="3" placeholder="Описание" required></textarea>
+            <button type="submit">Добавить</button>
+        
+    </form>
+    </div>
+</div>
+</body>
+</html>
