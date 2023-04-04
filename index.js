@@ -60,23 +60,15 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
     };
 });
 
-// document.forms[0].addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     const formData = new FormData(form);
-//     api.addCat(formData).then((res) => {
-//         console.log(res);
-//     })
-// });
-
-const getNewIdOfCat = async () => {
-    return api.allCatsIDs().then(res => {
-        return Math.max(...res) + 1;
-    })
+const getNewIdOfCat = () => {
+	return api.allCatsIDs().then((res) => {
+		if (res.length) {
+			return Math.max(...res) + 1;
+		} else {
+			return 1;
+		}
+	});
 };
-
-getNewIdOfCat().then(res => {
-    console.log(res);
-});
 
 document.getElementById('addNewCat').addEventListener('click', (event) => {
     event.preventDefault();
@@ -87,9 +79,12 @@ document.getElementById('addNewCat').addEventListener('click', (event) => {
         const form = document.forms[0];
         const formData = new FormData(form);
         const cat = Object.fromEntries(formData);
-        api.addCat(cat).then((res) => {
-            refreshCatsAndContent();
-        });
+        getNewIdOfCat().then((res) => {
+            cat.id = res;
+            api.addCat(cat).then(() => {
+                refreshCatsAndContent();
+            });
+        })
         modal.classList.toggle('active');
         form.reset();
     });

@@ -59,7 +59,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: start;
     align-content: start;
     padding: 20px;
