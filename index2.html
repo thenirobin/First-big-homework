@@ -8,6 +8,7 @@
     <script src = './index.js' defer ></script>
     <script src = './components/card.js' defer ></script>
     <script src = './components/create-edit.js' defer></script>
+    <script src = './components/catCardPopUp.js' defer></script>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;800&display=swap"
 rel="stylesheet">
@@ -21,29 +22,37 @@ rel="stylesheet">
 
 </head>
 <body>
-    <header>
+    <header class="transparent">
         <a href="" class="logo"><i class="fa-sharp fa-solid fa-paw fa-2xl"></i> Кошкинсы</a>
+        <button id="reload-page"> Обновить </button>
         <button id="addNewCat">Добавить кота</button>
     </header>
     <div id='homepage'>
-    <div class = 'content'></div>
-    <div class = 'create-edit-modal-form'>
-        <button class="closeNewCatForm">&times;</button>
-        <form action="">
-            <input id='id' name ='id' placeholder="id" type="hidden" required>
-            <label for="name">Имя</label>
-            <input id='name' name="name" placeholder="Например: Барсик" required>
-            <label for="image">Фотокарточка</label>
-            <input id='image' name="image" placeholder="Ссылка на фото" required>
-            <label for="age">Возраст кота</label>
-            <input id='age' name="age" type="number" placeholder="Например: 5" required>
-            <label for="rate">Рейтинг</label>
-            <input id="rate" name="rate" type="number" placeholder="От 0 до 10" required>
-            <textarea id="description" name="description" rows="3" placeholder="Описание" required></textarea>
-            <button type="submit">Добавить</button>
-        
-    </form>
+        <div class = 'content'></div>
+            <div class = 'create-edit-modal-form'>
+                <button class="closeNewCatForm">&times;</button>
+                <form action="">
+                    <input id='id' name ='id' placeholder="id" type="hidden" required>
+                    <label for="name">Имя</label>
+                    <input id='catName' name="name" placeholder="Например: Барсик" required>
+                    <label for="image">Фотокарточка</label>
+                    <input id='catImage' name="image" placeholder="Ссылка на фото" required>
+                    <label for="age">Возраст кота</label>
+                    <input id='catAge' name="age" type="number" placeholder="Например: 5" required>
+                    <label for="rate">Рейтинг</label>
+                    <input id="catRate" name="rate" type="number" placeholder="От 0 до 10" required>
+                    <textarea id="catDescription" name="description" rows="3" placeholder="Описание" required></textarea>
+                    <button type="submit">Добавить</button>
+                </form>
+            </div>
     </div>
-</div>
+    <footer>
+        <nav>
+            <a href="https://github.com/thenirobin"><i class="fa-brands fa-github fa-xl"></i></a>
+            <a href="https://t.me/gaaandhi"><i class="fa-brands fa-telegram fa-xl"></i></a>
+        </nav>
+        <p id="footer_dev">thenirobin</p>
+        <p id="footer_year">2023</p>
+    </footer>
 </body>
 </html>
