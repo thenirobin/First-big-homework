@@ -83,6 +83,8 @@ const openCatCardPopup = (cat) => {
 
 document.getElementById('reload-page').addEventListener('click', refreshCatsAndContent);
 
+
+
 document.getElementsByClassName('content')[0].addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
         switch(event.target.className) {
@@ -90,10 +92,19 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
                 api.getCatByID(event.target.value).then((res) => {
                     openCatCardPopup(res);
                 }); break;
-            case 'cat-card-update': 
+            case 'cat-card-update':
                 const evt = event.target.value;
                 const modal = document.querySelector('.create-edit-modal-form'); 
                 modal.classList.toggle('active');
+                api.getCatByID(event.target.value).then((res) => {
+                    const formFields = modalForm.elements;
+                    for (let i = 0; i < formFields.length; i++) {
+                        const fieldName = formFields[i].name;
+                            if (fieldName in res) {
+                                formFields[i].value = res[fieldName];
+                    }
+                    }
+                });
                 const modalForm = document.querySelector('form');
                 const modalBtn = modalForm.querySelector('button');
                 modalBtn.addEventListener('click', (evt) => { 
@@ -130,6 +141,7 @@ const getNewIdOfCat = () => {
 
 document.getElementById('addNewCat').addEventListener('click', (event) => {
     event.preventDefault();
+    document.forms[0].reset();
     const modal = document.querySelector('.create-edit-modal-form'); 
     modal.classList.toggle('active');
     document.forms[0].addEventListener('submit', (event) => {

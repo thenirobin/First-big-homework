@@ -29,22 +29,24 @@ rel="stylesheet">
     </header>
     <div id='homepage'>
         <div class = 'content'></div>
-            <div class = 'create-edit-modal-form'>
-                <button class="closeNewCatForm">&times;</button>
-                <form action="">
-                    <input id='id' name ='id' placeholder="id" type="hidden" required>
-                    <label for="name">Имя</label>
-                    <input id='catName' name="name" placeholder="Например: Барсик" required>
-                    <label for="image">Фотокарточка</label>
-                    <input id='catImage' name="image" placeholder="Ссылка на фото" required>
-                    <label for="age">Возраст кота</label>
-                    <input id='catAge' name="age" type="number" placeholder="Например: 5" required>
-                    <label for="rate">Рейтинг</label>
-                    <input id="catRate" name="rate" type="number" placeholder="От 0 до 10" required>
-                    <textarea id="catDescription" name="description" rows="3" placeholder="Описание" required></textarea>
-                    <button type="submit">Добавить</button>
-                </form>
-            </div>
+                <div class = 'create-edit-modal-form'>
+                    <button class="closeNewCatForm">&times;</button>
+                    <form action="">
+                        <input id='id' name ='id' placeholder="id" type="hidden" required>
+                        <label for="name">Имя</label>
+                        <input id='catName' name="name" placeholder="Например: Барсик" required>
+                        <label for="image">Фотокарточка</label>
+                        <input id='catImage' name="image" placeholder="Ссылка на фото" required>
+                        <label for="age">Возраст кота</label>
+                        <input id='catAge' name="age" type="number" placeholder="Например: 5" required>
+                        <label for="rate">Рейтинг</label>
+                        <input id="catRate" name="rate" type="number" placeholder="От 0 до 10" required>
+                        <label for="faveCat"><input type="checkbox" id="catFav" name="pet">Любимчик</label>
+                        
+                        <textarea id="catDescription" name="description" rows="3" placeholder="Описание" required></textarea>
+                        <button type="submit">Добавить</button>
+                    </form>
+                </div>
     </div>
     <footer>
         <nav>

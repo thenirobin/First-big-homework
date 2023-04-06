@@ -2,6 +2,7 @@
     width: 100vw;
     height: 100vh;
     background: rgb(236, 236, 241);
+    position: relative;
 }
 
 body {
@@ -16,6 +17,7 @@ body {
     font-size: 25px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-top: 70px;
+    z-index: 1;
 }
 
 .cat-card {
@@ -35,26 +37,65 @@ body {
     width: 10vw;
 }
 
-.create-edit-modal-form{
+.create-edit-modal-form {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
     width: 350px;
-    height: 350px;
+    height: 500px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgb(244, 244, 244);
-    border: 5px solid rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 20px;
-    margin: 15% auto;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    z-index: 2;
 }
 
 .active {
     display: flex;
 }
+
+.create-edit-modal-form button[type="submit"] {
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    transition: background-color 0.2s;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-edit-modal-form label {
+    font-family: sans-serif;
+}
+
+.create-edit-modal-form input,
+.create-edit-modal-form textarea {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.closeNewCatForm {
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+} 
 
 header {
     display: flex;
@@ -95,18 +136,6 @@ button:hover {
     transition: background-color 0.3s ease-in;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form label {
-    margin-bottom: 5px;
-}
-form input {
-    margin-bottom: 5px;
-}
-
 footer {
     height: 100px;
     display: flex;
@@ -126,3 +155,70 @@ footer p {
 .header__scrolled {
     transform: translateY(-100%);
 }
+
+.popup-wrapper-cat-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.popup-cat-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+.popup-close-cat-card {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.card-image {
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px 0px 0px 10px;
+}
+.card-content {
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 0px 10px 10px 0px;
+}
+.card-content p{
+    font-size: 14px;
+}
+label {
+    font-size: 16px;
+}
+.favourite-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+.favourite-container label {
+    margin-left: 5px;
+}
+
