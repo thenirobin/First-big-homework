@@ -95,7 +95,7 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
             case 'cat-card-update':
                 const evt = event.target.value;
                 const modal = document.querySelector('.create-edit-modal-form');
-                document.getElementsByClassName('content')[0].classList.toggle('modal-open');
+                document.getElementsByClassName('overlay')[0].classList.toggle('modal-open');
                 modal.classList.toggle('active');
                 api.getCatByID(event.target.value).then((res) => {
                     const formFields = modalForm.elements;
@@ -103,7 +103,7 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
                         const fieldName = formFields[i].name;
                             if (fieldName in res) {
                                 formFields[i].value = res[fieldName];
-                    }
+                            }
                     }
                 });
                 const modalForm = document.querySelector('form');
@@ -116,9 +116,10 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
                         const cat = Object.fromEntries(formData);
                         api.updateCat(cat).then((res) => { console.log(res); refreshCatsAndContent(); });
                         modal.classList.toggle('active'); 
-                        document.getElementsByClassName('content')[0].classList.toggle('modal-open');
+                        document.getElementsByClassName('overlay')[0].classList.toggle('modal-open');
                     }); 
-                }); break;
+                }); 
+                break;
             case 'cat-card-delete': {
                 api.deleteCat(event.target.value).then(res => {
                     console.log(res);
@@ -145,18 +146,19 @@ document.getElementById('addNewCat').addEventListener('click', (event) => {
     document.forms[0].reset();
     const modal = document.querySelector('.create-edit-modal-form'); 
     modal.classList.toggle('active');
-    document.getElementsByClassName('content')[0].classList.toggle('modal-open');
+    document.getElementsByClassName('overlay')[0].classList.toggle('modal-open');
     document.forms[0].addEventListener('submit', (event) => {
         event.preventDefault();
         const form = document.forms[0];
         const formData = new FormData(form);
         const cat = Object.fromEntries(formData);
-        api.addCat({ ...cat, id: getNewIdOfCatSync() }).then(() => {
+        api.addCat({ ...cat, id: getNewIdOfCatSync() }).then((res) => {
             addCatInLocalStorage({ ...cat, id: getNewIdOfCatSync() }); // синхронная замена асинхронщины
+            console.log(res);
             refreshCatsAndContentSync();
         });
         modal.classList.toggle('active');
-        document.getElementsByClassName('content')[0].classList.toggle('modal-open');
+        document.getElementsByClassName('overlay')[0].classList.toggle('modal-open');
         form.reset();
     });
 })
@@ -164,7 +166,7 @@ document.getElementById('addNewCat').addEventListener('click', (event) => {
 document.getElementsByClassName('closeNewCatForm')[0].addEventListener('click', (event) => {
     event.preventDefault();
     document.getElementsByClassName('create-edit-modal-form')[0].classList.remove('active');
-    document.getElementsByClassName('content')[0].classList.toggle('modal-open');
+    document.getElementsByClassName('overlay')[0].classList.toggle('modal-open');
 })
 
 function updateScroll() {
