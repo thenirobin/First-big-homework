@@ -94,7 +94,8 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
                 }); break;
             case 'cat-card-update':
                 const evt = event.target.value;
-                const modal = document.querySelector('.create-edit-modal-form'); 
+                const modal = document.querySelector('.create-edit-modal-form');
+                document.getElementsByClassName('content')[0].classList.toggle('modal-open');
                 modal.classList.toggle('active');
                 api.getCatByID(event.target.value).then((res) => {
                     const formFields = modalForm.elements;
@@ -115,7 +116,7 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
                         const cat = Object.fromEntries(formData);
                         api.updateCat(cat).then((res) => { console.log(res); refreshCatsAndContent(); });
                         modal.classList.toggle('active'); 
-                        forms.reset();
+                        document.getElementsByClassName('content')[0].classList.toggle('modal-open');
                     }); 
                 }); break;
             case 'cat-card-delete': {
@@ -144,6 +145,7 @@ document.getElementById('addNewCat').addEventListener('click', (event) => {
     document.forms[0].reset();
     const modal = document.querySelector('.create-edit-modal-form'); 
     modal.classList.toggle('active');
+    document.getElementsByClassName('content')[0].classList.toggle('modal-open');
     document.forms[0].addEventListener('submit', (event) => {
         event.preventDefault();
         const form = document.forms[0];
@@ -154,6 +156,7 @@ document.getElementById('addNewCat').addEventListener('click', (event) => {
             refreshCatsAndContentSync();
         });
         modal.classList.toggle('active');
+        document.getElementsByClassName('content')[0].classList.toggle('modal-open');
         form.reset();
     });
 })
@@ -161,6 +164,7 @@ document.getElementById('addNewCat').addEventListener('click', (event) => {
 document.getElementsByClassName('closeNewCatForm')[0].addEventListener('click', (event) => {
     event.preventDefault();
     document.getElementsByClassName('create-edit-modal-form')[0].classList.remove('active');
+    document.getElementsByClassName('content')[0].classList.toggle('modal-open');
 })
 
 function updateScroll() {
