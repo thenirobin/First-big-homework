@@ -8,7 +8,7 @@
 body {
     margin: 0;
 }
-
+/* Стили для расположения карточек с котами */
 .content {
     display: flex;
     flex-direction: row;
@@ -19,7 +19,7 @@ body {
     padding-top: 70px;
     z-index: 1;
 }
-
+/* Стили для карточек и содержимого */
 .cat-card {
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@ body {
     margin-top: 15px;
     width: 10vw;
 }
-
+/* Стили для модалки для добавления/изменения котов */
 .create-edit-modal-form {
     display: none;
     flex-direction: column;
@@ -98,7 +98,7 @@ form {
     right: 10px;
     top: 10px;
 } 
-
+/* Затемнение фона при открытии модалки */
 .modal-open {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.5);
@@ -106,7 +106,7 @@ form {
     height: 100%;
     z-index: 998;
 }
-
+/* Стили для шапки сайта */
 header {
     display: flex;
     flex-wrap: wrap;
@@ -125,7 +125,7 @@ header {
     left: 0;
     right: 0;
 }
-
+/* Стили для всех кнопок на странице */
 button {
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
@@ -145,7 +145,7 @@ button:hover {
     box-shadow: 0 16px 36px rgba(246 152 12 / 20%);
     transition: background-color 0.3s ease-in;
 }
-
+/* Стили для подвала сайта */
 footer {
     height: 100px;
     display: flex;
@@ -165,7 +165,7 @@ footer p {
 .header__scrolled {
     transform: translateY(-100%);
 }
-
+/* Стили для окна с просмотром котов */
 .popup-wrapper-cat-card {
     position: fixed;
     top: 0;

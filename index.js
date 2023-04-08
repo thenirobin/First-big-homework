@@ -1,5 +1,9 @@
-let store = window.localStorage;
+// Комментарии: не знаю, как будет у Вас, но у меня браузер блокирует картинки и они не отображаются в карточках.
+// Отображается только картинка, которая лежит в папке и на которую указан путь при просмотре существующего кота.
+// С localStorage я в процессе, но уже хочу прислать некий "черновой финал" на проверку, может я не вижу каких-то глобальных ошибок/недочетов.
+// Насчет коммитов gitHub: я делал их через VSCode и в какой-то момент все сломалось, потом снова заработало, но коммитов стало много. С этим я тоже позже разберусь, как ориентир, проверять нужно файлы с коммитом "...на проверку" 
 
+let store = window.localStorage;
 const homepage = document.getElementById('homepage');
 
 const refreshCatsAndContent = () => {
@@ -16,18 +20,6 @@ const refreshCatsAndContent = () => {
 
 refreshCatsAndContent();
 
-// function getCatData(catId) {
-//     return console.log(fetch(`https://cats.petiteweb.dev/api/single/thenirobin/${id}`).then((response) => response.json()));
-// }
-
-// function fillCatForm(catData) {
-//     document.getElementById("catName").value = catData.name;
-//     document.getElementById("catImage").value = catData.image;
-//     document.getElementById("catAge").value = catData.age;
-//     document.getElementById('catRate').value = catData.rate;
-//     document.getElementById("catDescription").value = catData.description;
-// }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Функции для работы с локальным хранилищем
 
@@ -39,7 +31,7 @@ const refreshCatsAndContentSync = () => {
 		(acc, el) => (acc += generateCard(el)),
 		''
 	);
-	content.insertAdjacentHTML('afterbegin', cards); // загуглите insertAdjacentHTML afterbegin
+	content.insertAdjacentHTML('afterbegin', cards);
 
 };
 
@@ -54,7 +46,7 @@ const deleteCatFromLocalStorage = (catId) => {
 	store.setItem(
 		'cats',
 		JSON.stringify(
-			JSON.parse(store.getItem('cats')).filter((el) => el.id != catId) // загуглить и поиграться с filter
+			JSON.parse(store.getItem('cats')).filter((el) => el.id != catId)
 		)
 	);
 };
@@ -114,7 +106,7 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
                         event.preventDefault(); 
                         const formData = new FormData(forms);
                         const cat = Object.fromEntries(formData);
-                        api.updateCat(cat).then((res) => { console.log(res); refreshCatsAndContent(); });
+                        api.updateCat(cat).then((res) => { console.log(res); refreshCatsAndContentSync(); });
                         modal.classList.toggle('active'); 
                         document.getElementsByClassName('overlay')[0].classList.toggle('modal-open');
                     }); 

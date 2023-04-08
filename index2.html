@@ -38,11 +38,10 @@ rel="stylesheet">
                 <label for="image">Фотокарточка</label>
                 <input id='catImage' name="image" placeholder="Ссылка на фото" required>
                 <label for="age">Возраст кота</label>
-                <input id='catAge' name="age" type="number" placeholder="Например: 5" required>
+                <input id='catAge' name="age" type="number" min="1" max="18" placeholder="Например: 5" required>
                 <label for="rate">Рейтинг</label>
-                <input id="catRate" name="rate" type="number" placeholder="От 0 до 10" required>
+                <input id="catRate" name="rate" type="number" min="0" max="10" placeholder="От 0 до 10" required>
                 <label for="faveCat"><input type="checkbox" id="catFav" name="pet">Любимчик</label>
-                
                 <textarea id="catDescription" name="description" rows="3" placeholder="Описание" required></textarea>
                 <button type="submit">Добавить</button>
             </form>
