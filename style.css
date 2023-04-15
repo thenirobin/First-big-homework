@@ -34,7 +34,7 @@ body {
 
 .cat-card img {
     margin-top: 15px;
-    width: 10vw;
+    width: 200px;
 }
 /* Стили для модалки для добавления/изменения котов */
 .create-edit-modal-form {
@@ -180,13 +180,14 @@ footer p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 500px;
+    width: 800px;
+    height: 500px;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
+
 }
 .popup-close-cat-card {
     position: absolute;
@@ -199,29 +200,29 @@ footer p {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 300px;
+    height: 95%;
     border-radius: 10px;
     overflow: hidden;
 }
 .card-image {
-    width: 50%;
+    width: 80%;
     height: 100%;
     background-size: cover;
     background-position: center;
     border-radius: 10px 0px 0px 10px;
 }
 .card-content {
-    width: 50%;
+    width: 30%;
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 0px 10px 10px 0px;
 }
 .card-content p{
-    font-size: 14px;
+    font-size: 19px;
 }
 label {
-    font-size: 16px;
+    font-size: 20px;
 }
 .favourite-container {
     margin-top: 10px;

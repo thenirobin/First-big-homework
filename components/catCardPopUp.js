@@ -20,7 +20,7 @@ const generateCatCardPopup = (cat) => {
                         <label for="cat-favorite">Любимчик</label>
                     </div>
                 </div>
-                <div class="card-image" style="background-image: url(${cat.img_link || 'image/cats.jpg'})"></div>
+                <div class="card-image" style="background-image: url(${cat.image || 'image/cats.jpg'})"></div>
             </div>
         </div>
     </div>

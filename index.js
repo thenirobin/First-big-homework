@@ -1,18 +1,20 @@
-// Комментарии: не знаю, как будет у Вас, но у меня браузер блокирует картинки и они не отображаются в карточках.
-// Отображается только картинка, которая лежит в папке и на которую указан путь при просмотре существующего кота.
 // С localStorage я в процессе, но уже хочу прислать некий "черновой финал" на проверку, может я не вижу каких-то глобальных ошибок/недочетов.
-// Насчет коммитов gitHub: я делал их через VSCode и в какой-то момент все сломалось, потом снова заработало, но коммитов стало много. С этим я тоже позже разберусь, как ориентир, проверять нужно файлы с коммитом "...на проверку" 
 
-let store = window.localStorage;
-const homepage = document.getElementById('homepage');
+let localStorage = window.localStorage;
+if (localStorage.getItem('cats') == null) {
+	localStorage.setItem('cats', '[]')
+}
+
+const modal = document.querySelector('.create-edit-modal-form');
+const modalForm = document.querySelector('form');
+const modalBtn = modalForm.querySelector('button');
 
 const refreshCatsAndContent = () => {
 
     const content = document.getElementsByClassName('content')[0];
     content.innerHTML = '';
     api.getAllCats().then((res) => {
-        console.log(res);
-        store.setItem('cats', JSON.stringify(res));
+        localStorage.setItem('cats', JSON.stringify(res));
         const cards = res.reduce((acc, el) => acc+=generateCard(el), '');
             content.insertAdjacentHTML('afterbegin', cards);
 });
@@ -27,7 +29,7 @@ const refreshCatsAndContentSync = () => {
 	const content = document.getElementsByClassName('content')[0];
 	content.innerHTML = '';
 
-	const cards = JSON.parse(store.getItem('cats')).reduce(
+	const cards = JSON.parse(localStorage.getItem('cats')).reduce(
 		(acc, el) => (acc += generateCard(el)),
 		''
 	);
@@ -36,24 +38,23 @@ const refreshCatsAndContentSync = () => {
 };
 
 const addCatInLocalStorage = (cat) => {
-	store.setItem(
+	localStorage.setItem(
 		'cats',
-		JSON.stringify([...JSON.parse(store.getItem('cats')), cat])
+		JSON.stringify([...JSON.parse(localStorage.getItem('cats')), cat])
 	);
 };
 
 const deleteCatFromLocalStorage = (catId) => {
-	store.setItem(
+	localStorage.setItem(
 		'cats',
 		JSON.stringify(
-			JSON.parse(store.getItem('cats')).filter((el) => el.id != catId)
+			JSON.parse(localStorage.getItem('cats')).filter((el) => el.id != catId)
 		)
 	);
 };
 
 const getNewIdOfCatSync = () => {
-	let res = JSON.parse(store.getItem('cats')); // получение данных о котах с нашего локального хранилища
-	console.log('getNewIdOfCatSync', res);
+	let res = JSON.parse(localStorage.getItem('cats')); // получение данных о котах с нашего локального хранилища
 	if (res.length) {
 		return Math.max(...res.map((el) => el.id)) + 1;
 	} else {
@@ -75,8 +76,6 @@ const openCatCardPopup = (cat) => {
 
 document.getElementById('reload-page').addEventListener('click', refreshCatsAndContent);
 
-
-
 document.getElementsByClassName('content')[0].addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
         switch(event.target.className) {
@@ -86,7 +85,6 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
                 }); break;
             case 'cat-card-update':
                 const evt = event.target.value;
-                const modal = document.querySelector('.create-edit-modal-form');
                 document.getElementsByClassName('overlay')[0].classList.toggle('modal-open');
                 modal.classList.toggle('active');
                 api.getCatByID(event.target.value).then((res) => {
@@ -98,8 +96,6 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
                             }
                     }
                 });
-                const modalForm = document.querySelector('form');
-                const modalBtn = modalForm.querySelector('button');
                 modalBtn.addEventListener('click', (evt) => { 
                     const forms = document.forms[0]; 
                     forms.addEventListener('submit', (event) => {
@@ -110,7 +106,7 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
                         modal.classList.toggle('active'); 
                         document.getElementsByClassName('overlay')[0].classList.toggle('modal-open');
                     }); 
-                }); 
+                });
                 break;
             case 'cat-card-delete': {
                 api.deleteCat(event.target.value).then(res => {
@@ -122,6 +118,7 @@ document.getElementsByClassName('content')[0].addEventListener('click', (event) 
         }
     };
 });
+
 
 const getNewIdOfCat = () => {
 	return api.allCatsIDs().then((res) => {
