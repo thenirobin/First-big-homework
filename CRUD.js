@@ -11,16 +11,6 @@ const addCatInLocalStorage = (cat) => {
         )}
 }
 
-const openCatCardPopup = (cat) => {
-    const content = document.getElementsByClassName('content')[0]
-    content.insertAdjacentHTML('afterbegin', generateCatPopup(cat))
-
-    let catPopup = document.querySelector('.popup-wrapper-cat-card');
-    let closePopup = document.querySelector('.popup-close-cat-card');
-    closePopup.addEventListener('click', () => {
-        catPopup.remove()
-    })
-}
 const updateCatInLocalStorage = (cat) => {
     let localCats = JSON.parse(localStorage.getItem('cats'))
     for (let i = 0; i < localCats.length; i++) {
@@ -47,3 +37,12 @@ const refreshCatsAndContentLocal = () => {
     content.insertAdjacentHTML('afterbegin',
         cards.reduce((acc, el) => acc + generateCard(el), ''))
 }
+
+const getNewIdOfCatLocal = () => {
+	let res = JSON.parse(localStorage.getItem('cats')); // получение данных о котах с нашего локального хранилища
+	if (res.length) {
+		return Math.max(...res.map((el) => el.id)) + 1;
+	} else {
+		return 1;
+	}
+};
